@@ -8,31 +8,7 @@ import (
 )
 
 func createChangePasswordPage() fyne.CanvasObject {
-	currentPageLanguage := map[string]map[string]string{
-		"en": {
-			"pageTitle":        "Change Password",
-			"oldPasswordLabel": "Old Password:",
-			"newPasswordLabel": "New Password:",
-			"oldPasswordHint":  "Enter your Old Password here.\t",
-			"newPasswordHint":  "Enter your New Password here.\t",
-		},
-		"fr": {
-			"pageTitle":        "changer le mot de passe",
-			"oldPasswordLabel": "Ancien mot de passe:",
-			"newPasswordLabel": "Nouveau mot de passe:",
-			"oldPasswordHint":  "Entrez votre ancien mot de passe ici.\t",
-			"newPasswordHint":  "Entrez votre nouveau mot de passe ici.\t",
-		},
-		"ar": {
-			"pageTitle":        "تغير كلمة السر",
-			"oldPasswordLabel": "كلمة السر القديمة :",
-			"newPasswordLabel": "كلمة السر الجديدة :",
-			"oldPasswordHint":  "ادخل كلمة السر الحالية هنا        ",
-			"newPasswordHint":  "ادخل كلمة السر الجديدة هنا        ",
-		},
-	}
-
-	pageTitle := widget.NewLabel(currentPageLanguage[currentLanguage]["pageTitle"])
+	pageTitle := widget.NewLabel(langMap["changePasswordPage"][currentLanguage]["pageTitle"])
 	pageTitle.TextStyle = widget.RichTextStyleHeading.TextStyle
 	returnButton := widget.NewButtonWithIcon("", theme.CancelIcon(), func() {
 		window.SetContent(createSettingsPage())
@@ -43,14 +19,14 @@ func createChangePasswordPage() fyne.CanvasObject {
 	newPasswordEntry := widget.NewPasswordEntry()
 	changePasswordForm := widget.NewForm(
 		&widget.FormItem{
-			Text:     currentPageLanguage[currentLanguage]["oldPasswordLabel"],
+			Text:     langMap["changePasswordPage"][currentLanguage]["oldPasswordLabel"],
 			Widget:   oldPasswordEntry,
-			HintText: currentPageLanguage[currentLanguage]["oldPasswordHint"],
+			HintText: langMap["changePasswordPage"][currentLanguage]["oldPasswordHint"],
 		},
 		&widget.FormItem{
-			Text:     currentPageLanguage[currentLanguage]["newPasswordLabel"],
+			Text:     langMap["changePasswordPage"][currentLanguage]["newPasswordLabel"],
 			Widget:   newPasswordEntry,
-			HintText: currentPageLanguage[currentLanguage]["newPasswordHint"],
+			HintText: langMap["changePasswordPage"][currentLanguage]["newPasswordHint"],
 		},
 	)
 	changePasswordForm.OnSubmit = func() { changePassword(oldPasswordEntry, newPasswordEntry) }

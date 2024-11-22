@@ -1,0 +1,68 @@
+package main
+
+var langMap = map[string]map[string]map[string]string{
+	"changePasswordPage": {
+		"en": {
+			"pageTitle":        "Change Password",
+			"oldPasswordLabel": "Old Password:",
+			"newPasswordLabel": "New Password:",
+			"oldPasswordHint":  "Enter your Old Password here.\t",
+			"newPasswordHint":  "Enter your New Password here.\t",
+		},
+		"fr": {
+			"pageTitle":        "changer le mot de passe",
+			"oldPasswordLabel": "Ancien mot de passe:",
+			"newPasswordLabel": "Nouveau mot de passe:",
+			"oldPasswordHint":  "Entrez votre ancien mot de passe ici.\t",
+			"newPasswordHint":  "Entrez votre nouveau mot de passe ici.\t",
+		},
+		"ar": {
+			"pageTitle":        "تغير كلمة السر",
+			"oldPasswordLabel": "كلمة السر القديمة :",
+			"newPasswordLabel": "كلمة السر الجديدة :",
+			"oldPasswordHint":  "ادخل كلمة السر الحالية هنا        ",
+			"newPasswordHint":  "ادخل كلمة السر الجديدة هنا        ",
+		},
+	},
+	"settingsPage": {
+		"en": {
+			"pageTitle":                  "Settings",
+			"themeDark":                  "Dark Theme",
+			"themeLight":                 "Light Theme",
+			"themeLabel":                 "Theme:",
+			"languageLabel":              "Language:",
+			"changePasswordButton":       "Change Password",
+			"changeSaveFolderButton":     "change save folder",
+			"saveFolderPathLabelDeafult": "Deafult",
+			"englishLanguage":            "English",
+			"frenchLanguage":             "Francais",
+			"arabicLanguage":             "العربية",
+		},
+		"fr": {
+			"pageTitle":                  "FR_Settings",
+			"themeDark":                  "FR_Dark Theme",
+			"themeLight":                 "FR_Light Theme",
+			"themeLabel":                 "FR_Theme:",
+			"languageLabel":              "FR_Language:",
+			"changePasswordButton":       "FR_Change Password",
+			"changeSaveFolderButton":     "FR_change save folder",
+			"saveFolderPathLabelDeafult": "FR_Deafult",
+			"englishLanguage":            "English",
+			"frenchLanguage":             "Francais",
+			"arabicLanguage":             "العربية",
+		},
+		"ar": {
+			"pageTitle":                  "الإعدادات",
+			"themeDark":                  "مظلم",
+			"themeLight":                 "مضيء",
+			"themeLabel":                 "الوضع:",
+			"languageLabel":              "اللغة:",
+			"changePasswordButton":       "تغير كلمة السر",
+			"changeSaveFolderButton":     "غير مجلد حفظ الملفات",
+			"saveFolderPathLabelDeafult": "AR_Deafult",
+			"englishLanguage":            "English",
+			"frenchLanguage":             "Francais",
+			"arabicLanguage":             "العربية",
+		},
+	},
+}
