@@ -7,14 +7,6 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func changePassword(oldPassword, newPassword *widget.Entry) {
-	if oldPassword.Text == currentPassword {
-		println("your new password is", newPassword.Text)
-	} else {
-		println("old password wrong!!")
-	}
-}
-
 func createChangePasswordPage() fyne.CanvasObject {
 	currentPageLanguage := map[string]map[string]string{
 		"en": {
@@ -31,12 +23,19 @@ func createChangePasswordPage() fyne.CanvasObject {
 			"oldPasswordHint":  "Entrez votre ancien mot de passe ici.\t",
 			"newPasswordHint":  "Entrez votre nouveau mot de passe ici.\t",
 		},
+		"ar": {
+			"pageTitle":        "تغير كلمة السر",
+			"oldPasswordLabel": "كلمة السر القديمة :",
+			"newPasswordLabel": "كلمة السر الجديدة :",
+			"oldPasswordHint":  "ادخل كلمة السر الحالية هنا        ",
+			"newPasswordHint":  "ادخل كلمة السر الجديدة هنا        ",
+		},
 	}
 
 	pageTitle := widget.NewLabel(currentPageLanguage[currentLanguage]["pageTitle"])
 	pageTitle.TextStyle = widget.RichTextStyleHeading.TextStyle
 	returnButton := widget.NewButtonWithIcon("", theme.CancelIcon(), func() {
-		println("exit")
+		window.SetContent(createSettingsPage())
 	})
 	topBarContainer := container.NewBorder(nil, nil, pageTitle, returnButton, nil)
 
