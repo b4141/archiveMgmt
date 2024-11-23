@@ -65,4 +65,46 @@ var langMap = map[string]map[string]map[string]string{
 			"arabicLanguage":             "العربية",
 		},
 	},
+	"addFilePage": {
+		"en": {
+			"pageTitle":           "Add a new file",
+			"fileNameLabel":       "File Name:",
+			"fileNameHintText":    "Enter a File Name here, this will be used when searching.\t",
+			"openFileLabel":       "File:",
+			"openFileButton":      "Open a file",
+			"openFileHintText":    "Choose the file that you want to add.\t",
+			"neededDateLabel":     "Needed Date:",
+			"neededDateButton":    "Select a date",
+			"neededDateHintText":  "Choose when You gonna need the File (optional).\t",
+			"startDateLabel":      "Start Date:",
+			"startDateButton":     "Select a date",
+			"startDateHintText":   "This makres the date when the file was created (optional).\t",
+			"endDateLabel":        "End Date:",
+			"endDateButton":       "Select a date",
+			"endDateHintText":     "This makres the date when the file will serve no purpse (optional).\t",
+			"locationLabel":       "Location:",
+			"locationHintText":    "Enter where the file is stored in real life (optional).\t",
+			"descriptionLabel":    "Description:",
+			"descriptionHintText": "Enter a description for the file (optional).\t",
+			"formSubmit":          "Submit",
+		},
+		"fr": {
+			"pageTitle": "",
+		},
+		"ar": {
+			"pageTitle": "",
+		},
+	},
+	"calendarDialog": {
+		"en": {
+			"title":  "Select a date",
+			"cancel": "Cancel",
+		},
+		"fr": {
+			"pageTitle": "",
+		},
+		"ar": {
+			"pageTitle": "",
+		},
+	},
 }

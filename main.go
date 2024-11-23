@@ -11,7 +11,8 @@ var window = App.NewWindow("ArchiveMgmt")
 func main() {
 	// homePage := createLoginPage()
 	// homePage := createChangePasswordPage()
-	homePage := createSettingsPage()
+	// homePage := createSettingsPage()
+	homePage := createAddFilePage()
 
 	window.SetContent(homePage)
 	windowSize := fyne.NewSize(650, 700)
