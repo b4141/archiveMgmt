@@ -30,20 +30,16 @@ func openChangeSaveFolderDialog() {
 }
 
 func createSettingsPage() fyne.CanvasObject {
-	pageTitle := widget.NewLabel(langMap["settingsPage"][currentLanguage]["pageTitle"])
-	pageTitle.TextStyle = widget.RichTextStyleHeading.TextStyle
-	returnButton := widget.NewButtonWithIcon("", theme.CancelIcon(), func() {
-		println("exit")
-	})
-	topBarContainer := container.NewBorder(nil, nil, pageTitle, returnButton, nil)
+	pageLangMap := langMap["settingsPage"][currentLanguage]
+	topBar := createTopBar(pageLangMap["pageTitle"], nil)
 
 	themeSelect := widget.NewSelect(
 		[]string{
-			langMap["settingsPage"][currentLanguage]["themeDark"],
-			langMap["settingsPage"][currentLanguage]["themeLight"],
+			pageLangMap["themeDark"],
+			pageLangMap["themeLight"],
 		},
 		func(selectedTheme string) {
-			if selectedTheme == langMap["settingsPage"][currentLanguage]["themeDark"] {
+			if selectedTheme == pageLangMap["themeDark"] {
 				setTheme("dark")
 			} else {
 				setTheme("light")
@@ -52,16 +48,16 @@ func createSettingsPage() fyne.CanvasObject {
 	)
 
 	if currentTheme == "dark" {
-		themeSelect.PlaceHolder = langMap["settingsPage"][currentLanguage]["themeDark"]
+		themeSelect.PlaceHolder = pageLangMap["themeDark"]
 	} else if currentTheme == "light" {
-		themeSelect.PlaceHolder = langMap["settingsPage"][currentLanguage]["themeLight"]
+		themeSelect.PlaceHolder = pageLangMap["themeLight"]
 	}
 
 	languageSelect := widget.NewSelect(
 		[]string{
-			langMap["settingsPage"][currentLanguage]["englishLanguage"],
-			langMap["settingsPage"][currentLanguage]["frenchLanguage"],
-			// langMap["settingsPage"][currentLanguage]["arabicLanguage"],
+			pageLangMap["englishLanguage"],
+			pageLangMap["frenchLanguage"],
+			// pageLangMap["arabicLanguage"],
 		},
 		func(selectedLanguage string) {
 			setLanguage(selectedLanguage)
@@ -70,42 +66,42 @@ func createSettingsPage() fyne.CanvasObject {
 	)
 
 	if currentLanguage == "en" {
-		languageSelect.PlaceHolder = langMap["settingsPage"][currentLanguage]["englishLanguage"]
+		languageSelect.PlaceHolder = pageLangMap["englishLanguage"]
 	} else if currentLanguage == "fr" {
-		languageSelect.PlaceHolder = langMap["settingsPage"][currentLanguage]["frenchLanguage"]
+		languageSelect.PlaceHolder = pageLangMap["frenchLanguage"]
 	} else if currentLanguage == "ar" {
-		languageSelect.PlaceHolder = langMap["settingsPage"][currentLanguage]["arabicLanguage"]
+		languageSelect.PlaceHolder = pageLangMap["arabicLanguage"]
 	}
 
-	changePassordButton := widget.NewButton(langMap["settingsPage"][currentLanguage]["changePasswordButton"], func() {
+	changePassordButton := widget.NewButton(pageLangMap["changePasswordButton"], func() {
 		window.SetContent(createChangePasswordPage())
 	})
 
 	changeSaveFolderButton := widget.NewButtonWithIcon(
-		langMap["settingsPage"][currentLanguage]["changeSaveFolderButton"],
+		pageLangMap["changeSaveFolderButton"],
 		theme.FolderIcon(),
 		func() {
 			openChangeSaveFolderDialog()
 		},
 	)
 
-	saveFolderPathLabel := widget.NewLabel(langMap["settingsPage"][currentLanguage]["saveFolderPathLabelDeafult"])
+	saveFolderPathLabel := widget.NewLabel(pageLangMap["saveFolderPathLabelDeafult"])
 	saveFolderPathLabel.TextStyle = widget.RichTextStyleBlockquote.TextStyle
 
 	if currentSaveFolder != "./files" {
 		splitedSFP := strings.Split(currentSaveFolder, "/")
-		saveFolderPathLabel.SetText(".... / " + splitedSFP[len(splitedSFP)-2] + " / " + splitedSFP[len(splitedSFP)-1])
+		saveFolderPathLabel.SetText(splitedSFP[0] + " / ... / " + splitedSFP[len(splitedSFP)-2] + " / " + splitedSFP[len(splitedSFP)-1])
 	}
 
 	pageContent := container.NewCenter(container.NewVBox(
 		widget.NewForm(
 			&widget.FormItem{
-				Text:     langMap["settingsPage"][currentLanguage]["themeLabel"],
+				Text:     pageLangMap["themeLabel"],
 				Widget:   themeSelect,
 				HintText: "\t\t\t",
 			},
 			&widget.FormItem{
-				Text:     langMap["settingsPage"][currentLanguage]["languageLabel"],
+				Text:     pageLangMap["languageLabel"],
 				Widget:   languageSelect,
 				HintText: "\t\t\t",
 			},
@@ -117,5 +113,5 @@ func createSettingsPage() fyne.CanvasObject {
 		saveFolderPathLabel,
 	))
 
-	return container.NewBorder(topBarContainer, nil, nil, nil, pageContent)
+	return container.NewBorder(topBar, nil, nil, nil, pageContent)
 }

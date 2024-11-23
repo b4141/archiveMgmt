@@ -9,7 +9,7 @@ import (
 func createAddFilePage() fyne.CanvasObject {
 	pageLangMap := langMap["addFilePage"][currentLanguage]
 
-	topBar := createTopBar(pageLangMap["pageTitle"])
+	topBar := createTopBar(pageLangMap["pageTitle"], nil)
 
 	fileNameEntry := widget.NewEntry()
 	openFileButton := createFileOpenButton(pageLangMap["openFileButton"])

@@ -48,11 +48,13 @@ func createFileOpenButton(buttonText string) fyne.CanvasObject {
 	return button
 }
 
-func createTopBar(title string) fyne.CanvasObject {
+func createTopBar(title string, content func() fyne.CanvasObject) fyne.CanvasObject {
 	pageTitle := widget.NewLabel(title)
 	pageTitle.TextStyle = widget.RichTextStyleHeading.TextStyle
 	returnButton := widget.NewButtonWithIcon("", theme.CancelIcon(), func() {
-		println("exit")
+		if content != nil {
+			window.SetContent(content())
+		}
 	})
 	topBarContainer := container.NewBorder(nil, nil, pageTitle, returnButton, nil)
 

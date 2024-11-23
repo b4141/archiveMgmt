@@ -9,4 +9,4 @@ var currentLanguage string = "en"
 var currentTheme string = "dark"
 
 // __takes_a_path
-var currentSaveFolder string = "./files/ljasdfl/lkjasdf"
+var currentSaveFolder string = "./files"
