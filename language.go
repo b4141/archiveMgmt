@@ -28,6 +28,7 @@ var langMap = map[string]map[string]map[string]string{
 		"en": {
 			"pageTitle":              "Home Page",
 			"searchInputPlaceHolder": "search",
+			"noFileSelected":         "Select a file from the list",
 		},
 		"fr": {},
 		"ar": {},

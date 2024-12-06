@@ -28,7 +28,7 @@ func createHomePage() fyne.CanvasObject {
 	homeTopBarButtons := container.NewHBox(addFileButton, settingsButton, spacer, logoutButton)
 	topBar := container.NewBorder(nil, container.NewHBox(spacer), nil, homeTopBarButtons, searchInput)
 
-	pageContent := container.NewCenter(widget.NewLabel("page content goes here"))
+	pageContent := createFilesTable()
 
 	return container.NewBorder(topBar, nil, nil, nil, pageContent)
 }
