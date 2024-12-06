@@ -31,7 +31,7 @@ func openChangeSaveFolderDialog() {
 
 func createSettingsPage() fyne.CanvasObject {
 	pageLangMap := langMap["settingsPage"][currentLanguage]
-	topBar := createTopBar(pageLangMap["pageTitle"], nil)
+	topBar := createTopBar(pageLangMap["pageTitle"], createHomePage)
 
 	themeSelect := widget.NewSelect(
 		[]string{

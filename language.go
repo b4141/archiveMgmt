@@ -24,6 +24,25 @@ var langMap = map[string]map[string]map[string]string{
 			"newPasswordHint":  "ادخل كلمة السر الجديدة هنا        ",
 		},
 	},
+	"homePage": {
+		"en": {
+			"pageTitle":              "Home Page",
+			"searchInputPlaceHolder": "search",
+		},
+		"fr": {},
+		"ar": {},
+	},
+	"loginPage": {
+		"en": {
+			"wrongPassword": "wrong password",
+		},
+		"fr": {
+			"wrongPassword": "FR_wrong password",
+		},
+		"ar": {
+			"wrongPassword": "AR_wrong password",
+		},
+	},
 	"settingsPage": {
 		"en": {
 			"pageTitle":                  "Settings",
