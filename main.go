@@ -16,7 +16,7 @@ func main() {
 	homePage := createHomePage()
 
 	window.SetContent(homePage)
-	windowSize := fyne.NewSize(650, 700)
+	windowSize := fyne.NewSize(750, 700)
 	window.Resize(windowSize)
 	window.ShowAndRun()
 }

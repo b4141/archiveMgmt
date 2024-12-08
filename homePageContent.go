@@ -1,13 +1,72 @@
 package main
 
 import (
+	"strconv"
+	"time"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
-	"strconv"
 )
+
+func createFileInfoPreview(filename string) fyne.CanvasObject {
+	dumyText := ";alskdfj;alskfjasklalskfjasklalskfjaskl;\n;asldkjfasl;kfjasd\nlas;dkfjaskl;dfj\n;laksdjf;alksjfads\n;lkjasdf;klasjdfals;k\nasdl;kfjas;klfjds"
+	spacer := widget.NewLabel("")
+	formSpacer := &widget.FormItem{
+		Text:   "",
+		Widget: widget.NewLabel(""),
+	}
+
+	now := time.Now().Format(time.DateOnly)
+	icon := widget.NewIcon(theme.FileIcon())
+	fileName := widget.NewLabel(filename)
+	nameBar := container.NewCenter(container.NewHBox(icon, fileName))
+
+	descriptionScroll := container.NewScroll(widget.NewLabel(dumyText))
+	descriptionScroll.SetMinSize(fyne.NewSize(120, 100))
+	info := widget.NewForm(
+		&widget.FormItem{
+			Text:   "fileType:",
+			Widget: widget.NewLabel("txt"),
+		},
+		&widget.FormItem{
+			Text:   "added:",
+			Widget: widget.NewLabel(now),
+		},
+		formSpacer,
+		&widget.FormItem{
+			Text:   "created Date:",
+			Widget: widget.NewLabel(now),
+		},
+		&widget.FormItem{
+			Text:   "expiration Date:",
+			Widget: widget.NewLabel(now),
+		},
+		&widget.FormItem{
+			Text:   "needed Date:",
+			Widget: widget.NewLabel(now),
+		},
+		&widget.FormItem{
+			Text:   "location:",
+			Widget: widget.NewLabel("draw A section B number 11"),
+		},
+		formSpacer,
+		&widget.FormItem{
+			Text:   "description:",
+			Widget: descriptionScroll,
+		},
+	)
+
+	copyButton := widget.NewButtonWithIcon("", theme.ContentCopyIcon(), nil)
+	editButton := widget.NewButtonWithIcon("", theme.DocumentCreateIcon(), nil)
+	deleteButton := widget.NewButtonWithIcon("", theme.DeleteIcon(), nil)
+	openButton := widget.NewButton("open", nil)
+	actionButtons := container.NewCenter(container.NewHBox(copyButton, spacer, editButton, spacer, deleteButton, spacer, openButton))
+
+	return container.NewVBox(nameBar, spacer, info, spacer, actionButtons)
+}
 
 func createFileRow() fyne.CanvasObject {
 	file := widget.NewIcon(theme.FileIcon())
@@ -31,9 +90,8 @@ func createFilesTable() fyne.CanvasObject {
 		data[i] = "file Number " + strconv.Itoa(i)
 	}
 
-	icon := widget.NewIcon(nil)
-	label := widget.NewLabel(pageLangMap["noFileSelected"])
-	hbox := container.NewHBox(icon, label)
+	// fileInfo := container.NewCenter(container.NewHBox(widget.NewLabel(pageLangMap["noFileSelected"])))
+	fileInfo := container.NewCenter(createFileInfoPreview("test file"))
 
 	list := widget.NewList(
 		func() int { return len(data) },
@@ -44,13 +102,15 @@ func createFilesTable() fyne.CanvasObject {
 	)
 
 	list.OnSelected = func(id widget.ListItemID) {
-		label.SetText(data[id] + ", wow a file")
+		fileInfo.RemoveAll()
+		fileInfo.Add(createFileInfoPreview(data[id]))
 	}
 
 	list.OnUnselected = func(id widget.ListItemID) {
-		label.SetText("Select A File From The List")
+		fileInfo.RemoveAll()
+		fileInfo.Add(container.NewHBox(widget.NewLabel(pageLangMap["noFileSelected"])))
 	}
 
-	fileTable := container.NewHSplit(list, container.NewCenter(hbox))
+	fileTable := container.NewHSplit(list, fileInfo)
 	return fileTable
 }
